@@ -10,7 +10,8 @@ export default class GalleryCollection extends Component {
 
     state = {
         collection: [],
-        page: 1
+        page: 1,
+        loading: true
     };
 
     componentDidMount() {
@@ -18,12 +19,14 @@ export default class GalleryCollection extends Component {
             .then(collection => {
                 this.setState({
                     collection,
-                    page: this.state.page + 1
+                    page: this.state.page + 1,
+                    loading: false
                 })
             });
     };
 
     showMorePhotos = () => {
+        this.setState({loading: true});
         service.getPhotos(this.state.page)
             .then(collection => {
                 this.setState({
@@ -31,19 +34,23 @@ export default class GalleryCollection extends Component {
                         ...this.state.collection,
                         ...collection
                     ],
-                    page: this.state.page + 1
+                    page: this.state.page + 1,
+                    loading: false
                 })
             })
     };
 
     render() {
-        const {collection} = this.state;
+        const {collection, loading} = this.state;
         return (
             <div className={"collection-wrapper"}>
                 <h2>Collection of photos</h2>
                 <GalleryCollectionItem collection={collection}/>
                 <div className={"loader-wrapper"}>
-                    <span onClick={() => this.showMorePhotos()} className={"glyphicon glyphicon-refresh loader"}></span>
+                    <span
+                        onClick={() => this.showMorePhotos()}
+                        className={`glyphicon glyphicon-refresh loader ${loading? "active" : ""}`}>
+                    </span>
                 </div>
             </div>
         );

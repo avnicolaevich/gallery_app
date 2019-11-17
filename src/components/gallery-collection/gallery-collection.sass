@@ -18,5 +18,12 @@
             font-size: 30px
             color: #fff
             cursor: pointer
+            &.active
+                animation: rotate 1s infinite linear
             &:hover
                 opacity: .7
+@keyframes rotate
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
