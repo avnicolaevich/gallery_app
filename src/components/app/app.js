@@ -3,7 +3,7 @@ import GalleryService from '../../service';
 import RandomPhoto from "../random-photo/random-photo";
 import GalleryCollection from "../gallery-collection/gallery-collection";
 
-import './app.css';
+import './app.sass';
 
 const service = new GalleryService();
 
@@ -11,13 +11,14 @@ class App extends Component {
 
     state = {
         collection: [],
-        randomPhoto: {}
+        randomPhoto: {},
+        page: 1
     };
 
     componentDidMount() {
-        service.getResponseApi('/photos')
+        service.getPhotos(this.state.page)
             .then(collection => this.setState({collection}))
-        service.getResponseApi('/photos/random')
+        service.getRandomPhoto()
             .then(randomPhoto => this.setState({randomPhoto}))
     }
 
