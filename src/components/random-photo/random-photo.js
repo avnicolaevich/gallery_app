@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './random-photo.sass';
+
 const RandomPhoto = ({randomPhoto}) => {
     const {urls={}, created_at='', likes=false, description='', user={}} = randomPhoto;
     return (

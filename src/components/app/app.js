@@ -10,24 +10,26 @@ const service = new GalleryService();
 class App extends Component {
 
     state = {
-        collection: [],
         randomPhoto: {},
-        page: 1
+        error: false
     };
 
     componentDidMount() {
-        service.getPhotos(this.state.page)
-            .then(collection => this.setState({collection}))
         service.getRandomPhoto()
             .then(randomPhoto => this.setState({randomPhoto}))
     }
 
+    componentDidCatch(error, errorInfo) {
+        this.setState({error: true})
+    }
+
     render() {
-        const {collection, randomPhoto} = this.state;
+        const {error, randomPhoto} = this.state;
+        if(error) return <div className={"error"}>Something went wrong...</div>;
         return (
             <>
                 <RandomPhoto randomPhoto={randomPhoto}/>
-                <GalleryCollection collection={collection}/>
+                <GalleryCollection/>
             </>
         );
     }
