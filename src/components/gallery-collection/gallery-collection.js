@@ -15,26 +15,30 @@ export default class GalleryCollection extends Component {
     };
 
     componentDidMount() {
-        service.getPhotos(this.state.page)
+        const {page} = this.state;
+        const {id} = this.props;
+        service.getPhotos(page, id)
             .then(collection => {
                 this.setState({
                     collection,
-                    page: this.state.page + 1,
+                    page: page + 1,
                     loading: false
                 })
             });
     };
 
     showMorePhotos = () => {
+        const {page, collection} = this.state;
+        const {id} = this.props;
         this.setState({loading: true});
-        service.getPhotos(this.state.page)
-            .then(collection => {
+        service.getPhotos(page, id)
+            .then(data => {
                 this.setState({
                     collection: [
-                        ...this.state.collection,
-                        ...collection
+                        ...collection,
+                        ...data
                     ],
-                    page: this.state.page + 1,
+                    page: page + 1,
                     loading: false
                 })
             })
