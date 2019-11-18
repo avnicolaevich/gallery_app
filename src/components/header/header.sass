@@ -1,3 +1,12 @@
+@mixin hover-effect
+    width: 5px
+    height: 5px
+    background: transparent
+    content: ""
+    position: absolute
+    transition: 0.3s
+    opacity: 0
+
 .header
     display: flex
     justify-content: center
@@ -11,15 +20,55 @@
     background-color: rgba(#000, .7)
     color: #fff
     .item
-        padding: 5px
-        margin: 0 20px
         text-transform: uppercase
-        opacity: .7
         cursor: pointer
-        color: #fff
-        &.active
+        color: #797878
+        margin: 0 20px
+        padding: 10px 20px
+        position: relative
+        overflow: hidden
+        display: inline-block
+        transition: ease-out 0.3s
+        &:hover, &:focus, &.active
+            color: #fff
+            text-decoration: none
+        &::before
+            @include hover-effect
+            right: 0
+            top: 0
+            border-right: 2px solid white
+            border-top: 2px solid white
+        &::after
+            @include hover-effect
+            left: 0
+            bottom: 0
+            border-left: 2px solid white
+            border-bottom: 2px solid white
+        &:hover::before
             opacity: 1
-            text-decoration: underline
-        &:hover
+            right: 5px
+            top: 5px
+        &:hover::after
             opacity: 1
-            text-decoration: underline
+            left: 5px
+            bottom: 5px
+        span::after
+            @include hover-effect
+            right: 0
+            bottom: 0
+            border-right: 2px solid white
+            border-bottom: 2px solid white
+        &:hover span::after
+            opacity: 1
+            right: 5px
+            bottom: 5px
+        span::before
+            @include hover-effect
+            left: 0
+            top: 0
+            border-top: 2px solid white
+            border-left: 2px solid white
+        &:hover span::before
+            opacity: 1
+            left: 5px
+            top: 5px

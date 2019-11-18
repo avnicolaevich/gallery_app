@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import GalleryService from "../../service";
 import GalleryCollectionItem from "../gallery-collection-item/gallery-collection-item";
+import Loader from "../loader/loader";
 
 import './gallery-collection.sass';
 
@@ -46,16 +47,16 @@ export default class GalleryCollection extends Component {
 
     render() {
         const {collection, loading} = this.state;
+        const {name} = this.props;
         return (
             <div className={"collection-wrapper"}>
-                <h2>Collection of photos</h2>
+                {
+                    name !== undefined ?
+                        <h2>Collection of <span>{name}</span> photos</h2> :
+                        <h2>Collection of photos</h2>
+                }
                 <GalleryCollectionItem collection={collection}/>
-                <div className={"loader-wrapper"}>
-                    <span
-                        onClick={() => this.showMorePhotos()}
-                        className={`glyphicon glyphicon-refresh loader ${loading? "active" : ""}`}>
-                    </span>
-                </div>
+                <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
             </div>
         );
     }

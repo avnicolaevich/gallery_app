@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import GalleryCollection from "../gallery-collection/gallery-collection";
+
 import Header from "../header/header";
 import HomePage from "../pages/home-page/home-page";
 import PageNotFound from "../pages/page-not-found/page-not-found";
-import Search from "../search/search";
+import SearchPage from "../pages/search-page/search-page";
+import NaturePage from "../pages/nature-page/nature-page";
+import FoodDrink from "../pages/food-drink-page/food-drink-page";
+import AnimalsPage from "../pages/animals-page/animals-page";
+import FilmsPage from "../pages/films-page/films-page";
 
 import './app.sass';
 
@@ -27,18 +31,33 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route
-                            path={"/home"}
+                            path={"/"}
                             render={() => <HomePage/>}
                             exact
                         />
                         <Route
-                            path={"/animal"}
-                            render={() => <GalleryCollection id={3330452}/>}
+                            path={"/animals"}
+                            render={() => <AnimalsPage id={3330452}/>}
+                            exact
+                        />
+                        <Route
+                            path={"/films"}
+                            render={() => <FilmsPage id={3679976}/>}
+                            exact
+                        />
+                        <Route
+                            path={"/food&drink"}
+                            render={() => <FoodDrink id={4172814}/>}
+                            exact
+                        />
+                        <Route
+                            path={"/nature"}
+                            render={() => <NaturePage id={244339}/>}
                             exact
                         />
                         <Route
                             path={"/search"}
-                            render={() => <Search/>}
+                            render={() => <SearchPage/>}
                             exact
                         />
                         <Route

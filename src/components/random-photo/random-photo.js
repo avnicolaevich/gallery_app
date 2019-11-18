@@ -17,13 +17,12 @@ export default class RandomPhoto extends Component {
     }
 
     render() {
-        const {urls={}, created_at='', likes=false, description='', user={}} = this.state.randomPhoto;
+        const {urls={}, created_at='', likes=false, user={}} = this.state.randomPhoto;
         return (
             <div className={"home-page"} style={{backgroundImage: `url(${urls.full})`}}>
                 <div className="home-page__collection">
                     <h1>{user.name}</h1>
                     <span>{created_at.slice(0, 10)}</span>
-                    <div>{description}</div>
                 </div>
                 <div className={"user-likes"}><span>{likes}</span></div>
             </div>

@@ -8,3 +8,5 @@ const SearchPage = () => {
         <Search/>
     )
 };
+
+export default SearchPage;

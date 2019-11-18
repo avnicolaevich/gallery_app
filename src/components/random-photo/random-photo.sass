@@ -8,18 +8,24 @@
     background-size: cover
     background-position: center
     &__collection
+        position: absolute
+        font-family: 'Permanent Marker', cursive
         display: flex
         flex-direction: column
         justify-content: center
         align-items: center
-        margin: auto
-        color: #000
+        bottom: 5px
+        left: 5px
+        color: #fff
         h1
-            font-size: 38px
+            font-size: 32px
             font-weight: 700
+            line-height: 1em
+            margin: 0
         span
-            font-size: 26px
+            font-size: 22px
             font-weight: 700
+            line-height: 1em
     .user-likes
         position: absolute
         background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png")
@@ -28,11 +34,13 @@
         display: inline-block
         height: 50px
         width: 50px
-        top: 10px
+        bottom: 50%
         right: 10px
         span
             position: absolute
             z-index: 1
+            font-size: 14px
+            font-weight: 700
             display: inline-block
             line-height: 46px
             text-align: center

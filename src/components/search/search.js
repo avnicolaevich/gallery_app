@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
+import GalleryService from "../../service";
+import GalleryCollectionItem from "../gallery-collection-item/gallery-collection-item";
+import Loader from "../loader/loader";
 
 import './search.sass';
+
+const service = new GalleryService();
 
 export default class Search extends Component {
 
     state = {
-        value: ''
+        value: '',
+        searchPhoto: [],
+        page: 1,
+        loading: false
     };
 
     handleChange = (e) => {
@@ -15,29 +23,55 @@ export default class Search extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {value} = this.state;
-        this.setState({value: ''});
+        const {value, page} = this.state;
+        service.getSearchPhoto(value, page)
+            .then(searchPhoto => this.setState(
+                {
+                    searchPhoto: searchPhoto.results,
+                    page: page + 1,
+                    loading: false
+                }
+            ));
     };
 
+    showMorePhotos = () => {
+        const {page, value, searchPhoto} = this.state;
+        this.setState({loading: true});
+        service.getSearchPhoto(value, page)
+            .then(data => {
+                this.setState({
+                    searchPhoto: [
+                        ...searchPhoto,
+                        ...data.results
+                    ],
+                    page: page + 1,
+                    loading: false
+                })
+            })
+    };
 
     render() {
-        const {value} = this.state;
-        console.log(value)
+        const {value, searchPhoto, loading} = this.state;
         return (
-            <div className={"search-wrapper"}>
-                <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <input
-                        onChange={(e) => this.handleChange(e)}
-                        value={value}
-                        type="text"
-                        name={"search"}
-                        className={"search-input"}
-                        placeholder={"Search..."}/>
-                    <button className={"search-input-btn"}>
-                        <i className={"glyphicon glyphicon-search"}></i>
-                    </button>
-                </form>
-            </div>
+            <>
+                <div className={"search-wrapper"}>
+                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                        <input
+                            onChange={(e) => this.handleChange(e)}
+                            value={value}
+                            type="text"
+                            name={"search"}
+                            autoComplete={"off"}
+                            className={"search-input"}
+                            placeholder={"Search..."}/>
+                        <button className={"search-input-btn"}>
+                            <i className={"glyphicon glyphicon-search"}></i>
+                        </button>
+                    </form>
+                </div>
+                <GalleryCollectionItem collection={searchPhoto}/>
+                <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
+            </>
         );
     }
 }
