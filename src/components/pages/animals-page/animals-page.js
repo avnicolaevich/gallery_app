@@ -4,7 +4,7 @@ import GalleryCollection from "../../gallery-collection/gallery-collection";
 const AnimalsPage = ({id}) => {
     return (
         <>
-            <GalleryCollection name={"Animals"} id={id}/>
+            <GalleryCollection category={"Animals"} id={id}/>
         </>
     );
 };

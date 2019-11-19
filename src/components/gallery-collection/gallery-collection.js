@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+
 import GalleryService from "../../service";
+import GalleryCollectionHeading from "../gallery-collection-heading/gallery-collection-heading";
 import GalleryCollectionItem from "../gallery-collection-item/gallery-collection-item";
 import Loader from "../loader/loader";
 
@@ -47,14 +49,10 @@ export default class GalleryCollection extends Component {
 
     render() {
         const {collection, loading} = this.state;
-        const {name} = this.props;
+        const {category} = this.props;
         return (
             <div className={"collection-wrapper"}>
-                {
-                    name !== undefined ?
-                        <h2>Collection of <span>{name}</span> photos</h2> :
-                        <h2>Collection of photos</h2>
-                }
+                <GalleryCollectionHeading category={category}/>
                 <GalleryCollectionItem collection={collection}/>
                 <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
             </div>
