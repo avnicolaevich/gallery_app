@@ -37,4 +37,26 @@ export default class GalleryService {
             });
         return await response.json();
     };
+
+    getOnePhoto = async(id) => {
+        const res =  await fetch(`https://api.unsplash.com/photos/${id}`, {
+            method: 'GET',
+                headers: {
+                    'Authorization': 'Client-ID cff11d975e766b0d4ed0f6b3ebb2647b75523b96c4d321820c3851401c54ba9b',
+                    'Accept-Version': 'v1'
+                }
+        });
+        return await res.json();
+    };
+
+    getUserInfo = async(username) => {
+        const res =  await fetch(`https://api.unsplash.com/users/${username}`, {
+            method: 'GET',
+                headers: {
+                    'Authorization': 'Client-ID cff11d975e766b0d4ed0f6b3ebb2647b75523b96c4d321820c3851401c54ba9b',
+                    'Accept-Version': 'v1'
+                }
+        });
+        return await res.json();
+    };
 }

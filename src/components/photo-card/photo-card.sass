@@ -1,0 +1,81 @@
+.photo-card
+    position: relative
+    max-width: 1200px
+    width: 100%
+    margin: 100px auto 20px
+    display: flex
+    justify-content: space-between
+    height: 600px
+    padding: 10px
+    background-color: #121212
+    &-image
+        display: flex
+        flex-grow: 1
+        img
+            width: 100%
+            height: auto
+            object-fit: cover
+            border-radius: 5px 0 0 5px
+    &-info
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        align-items: center
+        flex-grow: 0
+        background-color: #1e1e1e
+        border-radius: 0 5px 5px 0
+        padding: 20px
+        .likes
+            position: relative
+            display: flex
+            justify-content: center
+            width: 50px
+            height: 50px
+            margin-top: 50px
+            background: #bb86fc
+            border-radius: 0 0 0 10px
+            transform: rotate(-45deg)
+            animation: pulse 1s infinite
+            &::before,
+            &::after
+                position: absolute
+                content: ""
+                width: 50px
+                height: 50px
+                background: #bb86fc
+                border-radius: 50%
+            &::before
+                top: -25px
+                left: 0
+            &::after
+                top: 0
+                right: -25px
+            &-number
+                display: block
+                position: absolute
+                z-index: 1
+                color: #121212
+                font-size: 18px
+                font-weight: 700
+                left: 50%
+                transform: rotate(45deg)
+        .link
+            display: flex
+            cursor: pointer
+            transition: color .25s ease
+            &:hover
+                color: #03dac6
+
+@keyframes pulse
+    0%, 20%
+        transform: rotate(-45deg) scale(1)
+    30%
+        transform: rotate(-45deg) scale(1.2)
+    50%
+        transform: rotate(-45deg) scale(1)
+    60%
+        transform: rotate(-45deg) scale(1.1)
+    70%, 100%
+        transform: rotate(-45deg) scale(1)
+  
+

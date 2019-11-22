@@ -6,8 +6,37 @@ body
     font-size: 16px
     min-width: 320px
     position: relative
-    line-height: 1.75
+    line-height: 1.4
     overflow-x: hidden
+    color: #e1e1e1
+    background: #292929
+    opacity: 1
+
+.backTo
+    position: fixed
+    left: 60px
+    top: 105px
+    z-index: 10
+    span
+        display: inline-block
+        cursor: pointer
+        transition: all .25s ease
+        &:hover::before
+            color: #03dac6
+            text-decoration: none
+        &::before
+            display: block
+            font-size: 40px
+            text-decoration: none
+            transition: all .25s ease
+
+.error
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: 700px
+    height: 100vh
     color: #fff
-    background: rgb(26,26,26)
-    background: radial-gradient(circle, rgba(26,26,26,1) 0%, rgba(42,42,42,1) 24%, rgba(58,58,58,1) 70%, rgba(74,74,74,1) 100%)
+    position: relative
+    font-size: 30px

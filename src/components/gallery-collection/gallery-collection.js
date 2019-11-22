@@ -49,11 +49,11 @@ export default class GalleryCollection extends Component {
 
     render() {
         const {collection, loading} = this.state;
-        const {category} = this.props;
+        const {category, history} = this.props;
         return (
             <div className={"collection-wrapper"}>
                 <GalleryCollectionHeading category={category}/>
-                <GalleryCollectionItem collection={collection}/>
+                <GalleryCollectionItem collection={collection} history={history}/>
                 <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
             </div>
         );

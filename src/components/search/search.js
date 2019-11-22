@@ -52,6 +52,7 @@ export default class Search extends Component {
 
     render() {
         const {value, searchPhoto, loading} = this.state;
+        const {history} = this.props;
         return (
             <>
                 <div className={"search-wrapper"}>
@@ -69,7 +70,7 @@ export default class Search extends Component {
                         </button>
                     </form>
                 </div>
-                <GalleryCollectionItem collection={searchPhoto}/>
+                <GalleryCollectionItem collection={searchPhoto} history={history}/>
                 <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
             </>
         );

@@ -1,10 +1,14 @@
 import React from 'react';
 
 import GalleryCollection from "../../gallery-collection/gallery-collection";
+import Header from "../../header/header";
 
 const NaturePage = ({id}) => {
-    return(
-        <GalleryCollection category={"Nature"} id={id}/>
+    return (
+        <>
+            <Header/>
+            <GalleryCollection category={"Nature"} id={id}/>
+        </>
     )
 };
 

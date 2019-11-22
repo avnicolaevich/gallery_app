@@ -1,15 +1,21 @@
 import React from 'react';
+import { withRouter } from "react-router";
 
 import './gallery-collection-item.sass';
 
-const GalleryCollectionItem = ({collection}) => {
+const GalleryCollectionItem = ({collection, history}) => {
     return (
         <div className={"collection-container"}>
             {
                 collection.map(el => {
                     return(
-                        <div key={el.id} className={"collection-item"}>
-                            <img src={el.urls.small} alt={el.alt_description} />
+                        <div
+                            onClick={() => history.push(`/photo/${el.id}`)}
+                            key={el.id}
+                            className={"collection-item"}>
+                            <figure>
+                                <img src={el.urls.small} alt={el.alt_description} />
+                            </figure>
                         </div>
                     )
                 })
@@ -18,4 +24,4 @@ const GalleryCollectionItem = ({collection}) => {
     );
 };
 
-export default GalleryCollectionItem;
+export default withRouter(GalleryCollectionItem);

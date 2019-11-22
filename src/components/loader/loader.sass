@@ -1,17 +1,18 @@
 .loader-wrapper
 	width: 100%
-	height: 100px
+	height: 60px
 	display: flex
 	justify-content: center
 	align-items: center
 	.loader
 		font-size: 30px
-		color: #fff
+		color: #03dac6
 		cursor: pointer
+		transition: all .25s ease
 		&.active
 			animation: rotate 1s infinite linear
 		&:hover
-			opacity: .7
+			color: #018786
 @keyframes rotate
 	from
 		transform: rotate(0deg)
