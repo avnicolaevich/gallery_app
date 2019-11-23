@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import GalleryService from "../../service";
 import GalleryCollectionItem from "../gallery-collection-item/gallery-collection-item";
 import Loader from "../loader/loader";
@@ -29,7 +30,8 @@ export default class Search extends Component {
                 {
                     searchPhoto: searchPhoto.results,
                     page: page + 1,
-                    loading: false
+                    loading: false,
+                    value: ''
                 }
             ));
     };

@@ -2,15 +2,39 @@
     box-sizing: border-box
     margin: 0
     padding: 0
+    outline: none
 body
-    font-size: 16px
-    min-width: 320px
     position: relative
+    min-width: 320px
+    font-size: 16px
     line-height: 1.4
     overflow-x: hidden
-    color: #e1e1e1
+    color: rgba(#fff, .87)
     background: #292929
     opacity: 1
+    
+a 
+    color: inherit
+    text-decoration: none
+    transition: all .25s ease
+
+a:hover, a:focus
+    color: #bb86fc
+    text-decoration: none
+
+ul 
+    list-style: none
+
+img 
+    max-width: 100%
+
+button 
+    outline: none
+    border: none
+    cursor: pointer
+
+textarea 
+    resize: vertical
 
 .backTo
     position: fixed
@@ -22,7 +46,7 @@ body
         cursor: pointer
         transition: all .25s ease
         &:hover::before
-            color: #03dac6
+            color: #03DAC5
             text-decoration: none
         &::before
             display: block

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {NavLink} from "react-router-dom";
 
-import './homepage-slider.sass';
 import GalleryService from "../../service";
 import Preloader from "../preloader/preloader";
+import './homepage-slider.sass';
 
 const service = new GalleryService();
 

@@ -1,81 +1,51 @@
 .photo-card
     position: relative
     max-width: 1200px
-    width: 100%
     margin: 100px auto 20px
     display: flex
-    justify-content: space-between
-    height: 600px
+    height: auto
     padding: 10px
     background-color: #121212
+    box-shadow: 2px 2px 6px 0 #121212
     &-image
         display: flex
-        flex-grow: 1
+        flex: 1 0 0
         img
-            width: 100%
+            width: auto
             height: auto
             object-fit: cover
             border-radius: 5px 0 0 5px
     &-info
         display: flex
+        flex: 2 0 0
         flex-direction: column
-        justify-content: space-evenly
+        justify-content: center
         align-items: center
-        flex-grow: 0
         background-color: #1e1e1e
         border-radius: 0 5px 5px 0
-        padding: 20px
-        .likes
-            position: relative
-            display: flex
-            justify-content: center
-            width: 50px
-            height: 50px
-            margin-top: 50px
-            background: #bb86fc
-            border-radius: 0 0 0 10px
-            transform: rotate(-45deg)
-            animation: pulse 1s infinite
-            &::before,
-            &::after
-                position: absolute
-                content: ""
-                width: 50px
-                height: 50px
-                background: #bb86fc
-                border-radius: 50%
-            &::before
-                top: -25px
-                left: 0
-            &::after
-                top: 0
-                right: -25px
-            &-number
-                display: block
-                position: absolute
-                z-index: 1
-                color: #121212
-                font-size: 18px
+        padding: 10px
+        .user-info
+            text-align: center
+            margin-bottom: 20px
+            .username
+                font-size: 22px
+                font-family: 'Roboto Mono', monospace
                 font-weight: 700
-                left: 50%
-                transform: rotate(45deg)
+                color: rgba(#fff, .87)
+            p
+                span
+                    color: rgba(#fff, .38)
+                    strong
+                        font-weight: 100
+                        color: rgba(#fff, .6)
         .link
-            display: flex
+            display: block
             cursor: pointer
-            transition: color .25s ease
-            &:hover
-                color: #03dac6
-
-@keyframes pulse
-    0%, 20%
-        transform: rotate(-45deg) scale(1)
-    30%
-        transform: rotate(-45deg) scale(1.2)
-    50%
-        transform: rotate(-45deg) scale(1)
-    60%
-        transform: rotate(-45deg) scale(1.1)
-    70%, 100%
-        transform: rotate(-45deg) scale(1)
+            text-align: center
+            p
+                margin: 0
+                transition: color .25s ease
+            &:hover p
+                color: #bb86fc
   
 

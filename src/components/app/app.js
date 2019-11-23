@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Switch, Route} from "react-router-dom";
 
 import HomePage from "../pages/home-page/home-page";
@@ -14,72 +14,61 @@ import UserCard from "../user-card/user-card";
 
 import './app.sass';
 
-export default class App extends Component {
+const App = () => {
+    return (
+        <>
+            <Switch>
+                <Route
+                    path={"/"}
+                    render={() => <HomePage/>}
+                    exact
+                />
+                <Route
+                    path={"/all/"}
+                    render={({match}) => <AllPage id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/animals/:id"}
+                    render={({match}) => <AnimalsPage id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/films/:id"}
+                    render={({match}) => <FilmsPage id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/food&drink/:id"}
+                    render={({match}) => <FoodDrink id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/nature/:id"}
+                    render={({match}) => <NaturePage id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/photo/:id"}
+                    render={({match}) => <PhotoCard id={match.params.id}/>}
+                    exact
+                />
+                <Route
+                    path={"/user/:username"}
+                    render={({match}) => <UserCard username={match.params.username}/>}
+                    exact
+                />
+                <Route
+                    path={"/search"}
+                    render={() => <SearchPage/>}
+                    exact
+                />
+                <Route
+                    render={() => <PageNotFound/>}
+                />
+            </Switch>
+        </>
+    );
+};
 
-    state = {
-        error: false
-    };
-
-    componentDidCatch(error, errorInfo) {
-        this.setState({error: true})
-    }
-
-    render() {
-        const {error} = this.state;
-        if(error) return <div className={"error"}>Something went wrong...</div>;
-        return (
-            <>
-                <Switch>
-                    <Route
-                        path={"/"}
-                        render={() => <HomePage/>}
-                        exact
-                    />
-                    <Route
-                        path={"/all/"}
-                        render={({match}) => <AllPage id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/animals/:id"}
-                        render={({match}) => <AnimalsPage id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/films/:id"}
-                        render={({match}) => <FilmsPage id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/food&drink/:id"}
-                        render={({match}) => <FoodDrink id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/nature/:id"}
-                        render={({match}) => <NaturePage id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/photo/:id"}
-                        render={({match}) => <PhotoCard id={match.params.id}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/user/:username"}
-                        render={({match}) => <UserCard username={match.params.username}/>}
-                        exact
-                    />
-                    <Route
-                        path={"/search"}
-                        render={() => <SearchPage/>}
-                        exact
-                    />
-                    <Route
-                        render={() => <PageNotFound/>}
-                    />
-                </Switch>
-            </>
-        );
-    }
-}
+export default App;

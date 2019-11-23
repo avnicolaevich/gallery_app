@@ -23,7 +23,15 @@ class UserCard extends Component {
     render() {
         const { history } = this.props;
         const { user }  = this.state;
-        const { bio='', location='', name='', profile_image={}, portfolio_url='' } = user;
+        const { profile_image: image,
+                name, location, bio,
+                portfolio_url: portfolio,
+                followers_count: followers,
+                following_count: following,
+                instagram_username: instagram,
+                total_photos: photos,
+                total_likes: likes,
+                updated_at: updated } = user;
         if(!user) return <Preloader/>;
         return (
             <>
@@ -36,13 +44,28 @@ class UserCard extends Component {
                         <span className={"glyphicon glyphicon-circle-arrow-left"}></span>
                     </div>
                     <div className={"image"}>
-                        <img src={profile_image.large} alt={name}/>
+                        <img src={image.large} alt={name}/>
                     </div>
                     <div className={"user-card-info"}>
                         <p className={"name"}>{name}</p>
-                        <p className={"location"}><span>Location:</span> {location? location : ''}</p>
-                        <p className={"bio"}><span>Biography: </span>{bio ? bio : ''}</p>
-                        <p className={"portfolio"}>{portfolio_url}</p>
+                        <p><span>Location: </span>{location? location : 'unknown'}</p>
+                        <p>
+                            <span>Biography: </span>
+                            {bio ? bio : 'in the process'}
+                        </p>
+                        <p>
+                            <span>Portfolio: </span>
+                            <a href={portfolio} target={"_blank"}>{portfolio ? portfolio : 'in the process'}</a>
+                        </p>
+                        <p><span>Followers: </span> {followers ? followers : 'nto yet'}</p>
+                        <p><span>Following: </span> {following ? following : 'not yet'}</p>
+                        <p className={"instagram"}>
+                            <span>Instagram: </span>
+                            {instagram ? instagram : 'not yet'}
+                        </p>
+                        <p><span>Total number of photos: </span> {photos ? photos : 'not yet'}</p>
+                        <p><span>Total number of likes: </span> {likes ? likes : 'not yet'}</p>
+                        <p><span>Last updated: </span> {updated ? updated.slice(0, 10) : 'information relevant'}</p>
                     </div>
                 </div>
             </>

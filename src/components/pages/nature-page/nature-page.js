@@ -1,7 +1,7 @@
 import React from 'react';
 
-import GalleryCollection from "../../gallery-collection/gallery-collection";
 import Header from "../../header/header";
+import GalleryCollection from "../../gallery-collection/gallery-collection";
 
 const NaturePage = ({id}) => {
     return (

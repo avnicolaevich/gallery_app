@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { withRouter } from "react-router";
 
-import GalleryService from "../../service";
-import Preloader from "../preloader/preloader";
 import Header from "../header/header";
+import Preloader from "../preloader/preloader";
+import GalleryService from "../../service";
 
 import './photo-card.sass';
 
@@ -22,7 +22,7 @@ class PhotoCard extends Component {
 
     render() {
         const { photo } = this.state;
-        const { urls={}, user={}, created_at='', likes='', description='' } = photo;
+        const { urls={}, user={}, created_at='', description='' } = photo;
         const { location, name, username } = user;
         const { history } = this.props;
         if(!photo) return <Preloader/>;
@@ -41,16 +41,25 @@ class PhotoCard extends Component {
                     </div>
                     <div className={"photo-card-info"}>
                         <div className={"user-info"}>
-                            <h2 className={"username"}>{name}</h2>
-                            <p className={"location"}>{location ? `Location: ${location}` : ''}</p>
-                            <p className={"created-at"}>{ created_at ? `Created: ${created_at.slice(0, 10)}` : ''}</p>
-                            <div className={"description"}>{description ? `Description: ${description}` : ''}</div>
+                            <p className={"username"}>{name}</p>
+                            <p className={"location"}>
+                                {location ? <span>Location: <strong>{location}</strong></span> : ''}
+                            </p>
+                            <p className={"created-at"}>
+                                {
+                                    created_at ?
+                                    <span>Created: <strong>{created_at.slice(0, 10)}</strong></span> : ''
+                                }
+                            </p>
+                            <p className={"description"}>
+                                {description ? <span>Description: <strong>{description}</strong></span> : ''}
+                            </p>
                         </div>
-                        <div className={"likes"}><span className={"likes-number"}>{likes}</span></div>
-                        <span
-                            className={"link"}
-                            onClick={() => history.push(`/user/${username}/`)}
-                        >More information about {name}</span>
+                        <div className={"link"}
+                           onClick={() => history.push(`/user/${username}/`)}
+                        >More about:
+                            <p>{name}</p>
+                        </div>
                     </div>
                 </div>
             </>
