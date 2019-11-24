@@ -79,12 +79,11 @@ export default class Search extends Component {
                         <button className={"search-button"}>
                             <FontAwesomeIcon icon={faSearch}/>
                         </button>
-                        <p className={warning ? "search-warning": "search-warning disabled"}>
-                            <FontAwesomeIcon icon={faExclamationTriangle}/>
-                            {warning}
-                        </p>
                     </form>
                 </div>
+                <p className={warning ? "search-warning": "search-warning disabled"}>
+                    <FontAwesomeIcon icon={faExclamationTriangle}/>{warning}
+                </p>
                 <GalleryCollectionItem collection={searchPhoto} history={history}/>
                 <Loader page={page} loading={loading} showMorePhotos={this.showMorePhotos}/>
             </>

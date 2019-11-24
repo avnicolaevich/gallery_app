@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../header/header";
 import Preloader from "../preloader/preloader";
@@ -33,7 +35,6 @@ class UserCard extends Component {
                 total_likes: likes,
                 updated_at: updated } = user;
         if(!user) return <Preloader/>;
-        console.log(user)
         return (
             <>
                 <Header/>
@@ -42,7 +43,7 @@ class UserCard extends Component {
                         onClick={() => history.goBack()}
                         className="backTo"
                     >
-                        <span className={"glyphicon glyphicon-circle-arrow-left"}></span>
+                        <FontAwesomeIcon icon={faHandPointLeft} className={"hand-left"}/>
                     </div>
                     <div className={"image"}>
                         <img src={image.large} alt={name}/>

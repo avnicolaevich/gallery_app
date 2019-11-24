@@ -7,11 +7,12 @@
 	margin: auto
 	padding: 100px 10px 21px 10px
 	position: relative
-	+ .collection-container
+	~ .collection-container
 		max-width: 1200px
 		width: 100%
 		margin: auto
 	&-description
+		display: inline-block
 		font-size: 14px
 		font-weight: normal
 		color: rgba(#fff, .38)
@@ -43,7 +44,9 @@
 		&:hover
 			color: rgba(#03DAC5, .7)
 	&-warning
-		margin-top: 10px
+		max-width: 1200px
+		width: 100%
+		margin: 0 auto 10px
 		font-size: 16px
 		font-weight: 600
 		text-indent: 26px
