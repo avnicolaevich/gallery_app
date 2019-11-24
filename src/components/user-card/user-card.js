@@ -33,6 +33,7 @@ class UserCard extends Component {
                 total_likes: likes,
                 updated_at: updated } = user;
         if(!user) return <Preloader/>;
+        console.log(user)
         return (
             <>
                 <Header/>

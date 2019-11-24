@@ -1,6 +1,7 @@
 ::placeholder
 	color: rgba(#fff, .38)
-.search-wrapper
+
+.search
 	max-width: 1200px
 	width: 100%
 	margin: auto
@@ -10,7 +11,13 @@
 		max-width: 1200px
 		width: 100%
 		margin: auto
-	.search-input
+	&-description
+		font-size: 14px
+		font-weight: normal
+		color: rgba(#fff, .38)
+		margin-bottom: 10px
+		text-indent: 26px
+	&-input
 		width: 100%
 		height: 56px
 		padding-left: 25px
@@ -22,11 +29,11 @@
 		background-color: transparent
 		&:active, &:focus
 			outline: none
-	.search-input-btn
+	&-button
 		position: absolute
 		font-size: 22px
 		right: 30px
-		bottom: 30px
+		bottom: 32px
 		color: #03DAC5
 		background-color: transparent
 		border: none
@@ -35,3 +42,11 @@
 			outline: none
 		&:hover
 			color: rgba(#03DAC5, .7)
+	&-warning
+		margin-top: 10px
+		font-size: 16px
+		font-weight: 600
+		text-indent: 26px
+		color: rgba(#fff, .6)
+	&-warning.disabled
+		display: none

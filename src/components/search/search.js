@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch , faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 import GalleryService from "../../service";
 import GalleryCollectionItem from "../gallery-collection-item/gallery-collection-item";
@@ -14,7 +16,8 @@ export default class Search extends Component {
         value: '',
         searchPhoto: [],
         page: 1,
-        loading: false
+        loading: false,
+        warning: false
     };
 
     handleChange = (e) => {
@@ -25,13 +28,14 @@ export default class Search extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const {value, page} = this.state;
+        if (!value) return this.setState({warning: 'You have not specified search parameters'});
         service.getSearchPhoto(value, page)
             .then(searchPhoto => this.setState(
                 {
                     searchPhoto: searchPhoto.results,
                     page: page + 1,
                     loading: false,
-                    value: ''
+                    warning: ''
                 }
             ));
     };
@@ -53,12 +57,17 @@ export default class Search extends Component {
     };
 
     render() {
-        const {value, searchPhoto, loading} = this.state;
+        const {value, searchPhoto, loading, page, warning} = this.state;
         const {history} = this.props;
         return (
             <>
-                <div className={"search-wrapper"}>
+                <div className={"search"}>
                     <form onSubmit={(e) => this.handleSubmit(e)}>
+                        <label htmlFor={"search-input"} className={"search-description"}>
+                            An image search lets you search a pictures of all kinds,
+                            from portraits and clipart images to black and white photos,
+                            illustrations, line drawings, and more.
+                        </label>
                         <input
                             onChange={(e) => this.handleChange(e)}
                             value={value}
@@ -67,13 +76,17 @@ export default class Search extends Component {
                             autoComplete={"off"}
                             className={"search-input"}
                             placeholder={"Search..."}/>
-                        <button className={"search-input-btn"}>
-                            <i className={"glyphicon glyphicon-search"}></i>
+                        <button className={"search-button"}>
+                            <FontAwesomeIcon icon={faSearch}/>
                         </button>
+                        <p className={warning ? "search-warning": "search-warning disabled"}>
+                            <FontAwesomeIcon icon={faExclamationTriangle}/>
+                            {warning}
+                        </p>
                     </form>
                 </div>
                 <GalleryCollectionItem collection={searchPhoto} history={history}/>
-                <Loader loading={loading} showMorePhotos={this.showMorePhotos}/>
+                <Loader page={page} loading={loading} showMorePhotos={this.showMorePhotos}/>
             </>
         );
     }

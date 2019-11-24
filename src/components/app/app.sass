@@ -44,6 +44,8 @@ textarea
     span
         display: inline-block
         cursor: pointer
+        border-radius: 50%
+        box-shadow: 2px 2px 10px lighten(#000, 1)
         transition: all .25s ease
         &:hover::before
             color: #03DAC5
@@ -55,12 +57,21 @@ textarea
             transition: all .25s ease
 
 .error
+    position: relative
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     min-height: 700px
     height: 100vh
-    color: #fff
-    position: relative
+    color: #000
     font-size: 30px
+    background-color: #CF6679
+
+svg
+    color: #03DAC5
+    margin-right: 5px
+    transition: color .25s ease
+    text-decoration: none
+    &:hover
+        color: darken(#03DAC5, 10)
